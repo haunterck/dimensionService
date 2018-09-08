@@ -25,7 +25,7 @@ SECRET_KEY = 'q0)z&u%v3*0nr#ol-m_)xudc$-3o9pksa+z06k&5f147zeuyi!'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['bancomerservice-dev.us-west-2.elasticbeanstalk.com', 'localhost']
 
 
 # Application definition
