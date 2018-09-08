@@ -33,13 +33,17 @@ class QRCodeView(APIView):
 
 
             payment_motive = "Pruebña verificación código ñoño QR"
-            clabe = "012987654321234567"
+            # clabe = "012987654321234567"
+            clabe = "072180006408293934"
             payment_type = "CL"
             qr_reference = "ABCdef1"
-            beneficiary_name = "Pedro López Patiño"
-            amount = "2346768.687867997897"[:10]
+            # beneficiary_name = "Pedro López Patiño"
+            beneficiary_name = "Mario Aldama"
+            # amount = "2346768.687867997897"[:10]
+            amount = "0.01"[:10]
             amount = str(round(decimal.Decimal(amount), 2))
-            bank = "00" + "012"
+            # bank = "00" + "012"
+            bank = "00" + "072"
 
 
             data = {
