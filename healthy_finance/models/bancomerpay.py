@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class Bancomerpay(models.Model):
     hashkey = models.CharField(primary_key=True, max_length=96)
     ot = models.CharField(max_length=4, blank=True, null=True)
