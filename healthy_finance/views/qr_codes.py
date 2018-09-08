@@ -11,7 +11,7 @@ from django.db.utils import OperationalError
 
 
 class QRCodeView(APIView):
-    QR_PATH = os.getcwd() + "/qrImage.png"
+    QR_PATH = os.getcwd() + "/qr_images/qrImage.png"
     BBVA_KEY = "012"
     MX_COUNTRY = "MX"
     MX_CURRENCY = "MXN"
@@ -34,7 +34,7 @@ class QRCodeView(APIView):
 
             payment_motive = "Pruebña verificación código ñoño QR"
             # clabe = "012987654321234567"
-            clabe = "072180006408293934"
+            clabe = "012540014397196873"
             payment_type = "CL"
             qr_reference = "ABCdef1"
             # beneficiary_name = "Pedro López Patiño"
@@ -42,8 +42,8 @@ class QRCodeView(APIView):
             # amount = "2346768.687867997897"[:10]
             amount = "0.01"[:10]
             amount = str(round(decimal.Decimal(amount), 2))
-            # bank = "00" + "012"
-            bank = "00" + "072"
+            bank = "00" + "012"
+            # bank = "00" + "072"
 
 
             data = {
@@ -71,6 +71,7 @@ class QRCodeView(APIView):
 
             with open(self.QR_PATH, 'rb') as imgFile:
                 image = base64.b64encode(imgFile.read())
+            os.remove(self.QR_PATH)
 
             return Response({
                 "qrBase64": image
