@@ -12,7 +12,7 @@ from django.db.utils import OperationalError
 class LuCasfimView(APIView):
 
     def get(self, request, pk=None):
-
+        print(pk)
         try:
             if pk is not None:
                 record = LuCasfim.objects.get(hashkey=pk)
