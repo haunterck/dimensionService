@@ -7,6 +7,7 @@ from .bancomer_pay import BancomerpayView
 from .dashboard_reports import report_income
 from .dashboard_reports import report_industries
 from .dashboard_reports import report_client_movements
-from.dashboard_reports import get_client_rfc
+from .dashboard_reports import get_client_rfc
 from .profile import ProfileView
 from .telmex_header import TelmexHeaderView
+from .dashboard_reports import get_telephone_outcomes

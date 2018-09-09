@@ -12,6 +12,7 @@ from healthy_finance.views import report_client_movements
 from healthy_finance.views import get_client_rfc
 from healthy_finance.views import ProfileView
 from healthy_finance.views import TelmexHeaderView
+from healthy_finance.views import get_telephone_outcomes
 
 urlpatterns = [
     # LU endpoints
@@ -32,6 +33,7 @@ urlpatterns = [
     path('better-industries/', report_industries),
     path('client-movements/<str:rfc>/', report_client_movements),
     path('client/rfcs/', get_client_rfc),
+    path('telephone-outcomes/', get_telephone_outcomes),
 
     path('profile/', ProfileView.as_view()),
     path('profile/<str:pk>/', ProfileView.as_view()),

@@ -107,3 +107,35 @@ def get_client_rfc(request):
         list_rfc.append(client['rfc'])
 
     return JsonResponse(list_rfc, safe=False, status=200)
+
+
+@api_view(['GET'])
+def get_telephone_outcomes(request):
+    cursor = connection.cursor()
+    query = """
+              select  nu_cliente, nombre_razon_social, total as monto, tipo, po.telefono , date(tl.fecha) fecha
+                from  BANCOMER.profile po
+                    inner join (select receptor_Rfc ,total,'telefono' tipo , fecha  from BANCOMER.telmex_header ) tl
+                        on tl.receptor_Rfc = po.rfc
+                  union all
+                    select  nu_cliente, nombre_razon_social, renta as monto, tipo, po.celular, date(sysdate()) fecha
+                        from  BANCOMER.profile po
+                            inner join( select  renta,celular, 'celular' tipo from BANCOMER.att_plan )at
+                                on at.celular=po.celular;   
+                """
+
+    cursor.execute(query)
+
+    rows = cursor.fetchall()
+    response_list = list()
+    for row in rows:
+        print(row)
+        response_list.append({
+            "clientNumber": row[0],
+            "businessName": row[1],
+            "amount": row[2],
+            "type": row[3],
+            "telephoneNumber": row[4],
+            "date": row[5],
+        })
+    return JsonResponse(response_list, safe=False, status=200)
