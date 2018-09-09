@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from healthy_finance.models import Cliente
-from healthy_finance.models import LuCasfim
+
 
 class ClienteSerializer(serializers.ModelSerializer):
 
