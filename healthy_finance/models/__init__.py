@@ -4,3 +4,4 @@ from .lu_casfim import LuCasfim
 from .lu_ieps import LuIeps
 from .bancomer_pay import Bancomerpay
 from .profile import Profile
+from .telmex_header import TelmexHeader
