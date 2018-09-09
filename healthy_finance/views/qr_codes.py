@@ -11,7 +11,8 @@ from django.db.utils import OperationalError
 
 
 class QRCodeView(APIView):
-    QR_PATH = os.getcwd() + "/qr_images/qrImage.png"
+    # QR_PATH = os.getcwd() + "/qr_images/qrImage.png"
+    QR_PATH = "qrImage.png"
     BBVA_KEY = "012"
     MX_COUNTRY = "MX"
     MX_CURRENCY = "MXN"
