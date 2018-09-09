@@ -6,6 +6,7 @@ from healthy_finance.views import QRCodeView
 from healthy_finance.views import ClienteView
 from healthy_finance.views import AttPlanView
 from healthy_finance.views import BancomerpayView
+from healthy_finance.views import ProfileView
 
 urlpatterns = [
     # LU endpoints
@@ -21,6 +22,8 @@ urlpatterns = [
     path('cliente/<str:pk>/', ClienteView.as_view()),
     path('bancomerpay/', BancomerpayView.as_view()),
     path('bancomerpay/<str:pk>/', BancomerpayView.as_view()),
+    path('profile/', ProfileView.as_view()),
+    path('profile/<str:pk>/', ProfileView.as_view()),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)
