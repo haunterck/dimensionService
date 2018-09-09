@@ -13,13 +13,13 @@ def report_income(request):
     cursor = connection.cursor()
     cursor.execute("""
         select count(*), sector , actividad, sum(monto) from BANCOMER.movimientos mv
-            INNER JOIN BANCOMER.profile po
+            INNER JOIN BANCOMER.cliente po
                 on po.rfc = mv.rfc
             inner join BANCOMER.lu_casfim as cas
                 on cas.hashkey = po.hashkey_casfim
             where tipo= 'deposito'
         group by  sector , actividad
-        limit 10;
+limit 100;
     """)
 
     rows = cursor.fetchall()
