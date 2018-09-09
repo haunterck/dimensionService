@@ -71,7 +71,7 @@ class QRCodeView(APIView):
 
             with open(self.QR_PATH, 'rb') as imgFile:
                 image = base64.b64encode(imgFile.read())
-            os.remove(self.QR_PATH)
+            # os.remove(self.QR_PATH)
 
             return Response({
                 "qrBase64": image
