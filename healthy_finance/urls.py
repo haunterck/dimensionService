@@ -10,6 +10,8 @@ from healthy_finance.views import report_income
 from healthy_finance.views import report_industries
 from healthy_finance.views import report_client_movements
 from healthy_finance.views import get_client_rfc
+from healthy_finance.views import ProfileView
+from healthy_finance.views import TelmexHeaderView
 
 urlpatterns = [
     # LU endpoints
@@ -25,12 +27,17 @@ urlpatterns = [
     path('bancomerpay/<str:pk>/', BancomerpayView.as_view()),
     # QR code endpoint
     path('qr/<str:pk>/', QRCodeView.as_view()),
-
     # Dashboards
     path('better-incomes/', report_income),
     path('better-industries/', report_industries),
     path('client-movements/<str:rfc>/', report_client_movements),
     path('client/rfcs/', get_client_rfc),
+
+    path('profile/', ProfileView.as_view()),
+    path('profile/<str:pk>/', ProfileView.as_view()),
+    path('telmex/', TelmexHeaderView.as_view()),
+    path('telmex/<str:pk>/', TelmexHeaderView.as_view()),
+
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)

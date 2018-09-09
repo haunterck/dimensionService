@@ -3,4 +3,5 @@ from .lu_ieps_serializer import LuIepsSerializer
 from .att_plan import AttPlanSerializer
 from .cliente import ClienteSerializer
 from .bancomer_pay import BancomerpaySerializer
-
+from .profile import ProfileSerializer
+from .telmex_header import TelmexHeaderSerializer
