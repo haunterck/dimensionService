@@ -4,6 +4,8 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from django.http import JsonResponse
 from django.db import connection
+from healthy_finance.models import Cliente
+from healthy_finance.serializers import ClienteSerializer
 
 
 @api_view(['GET'])
@@ -95,3 +97,13 @@ def report_client_movements(request, rfc):
         })
     return JsonResponse(response_list, safe=False, status=200)
 
+@api_view(['GET'])
+def get_client_rfc(request):
+    # clients = Cliente.objects.all().distinct('rfc')
+    clients = Cliente.objects.values('rfc').distinct()
+    list_rfc = list()
+    for client in clients:
+        #print(client)
+        list_rfc.append(client['rfc'])
+
+    return JsonResponse(list_rfc, safe=False, status=200)

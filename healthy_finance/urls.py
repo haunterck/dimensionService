@@ -9,6 +9,7 @@ from healthy_finance.views import BancomerpayView
 from healthy_finance.views import report_income
 from healthy_finance.views import report_industries
 from healthy_finance.views import report_client_movements
+from healthy_finance.views import get_client_rfc
 
 urlpatterns = [
     # LU endpoints
@@ -29,6 +30,7 @@ urlpatterns = [
     path('better-incomes/', report_income),
     path('better-industries/', report_industries),
     path('client-movements/<str:rfc>/', report_client_movements),
+    path('client/rfcs/', get_client_rfc),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)
