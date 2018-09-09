@@ -6,8 +6,9 @@ from healthy_finance.views import QRCodeView
 from healthy_finance.views import ClienteView
 from healthy_finance.views import AttPlanView
 from healthy_finance.views import BancomerpayView
-from healthy_finance.views import reportIncome
-from healthy_finance.views import reportIndustries
+from healthy_finance.views import report_income
+from healthy_finance.views import report_industries
+from healthy_finance.views import report_client_movements
 
 urlpatterns = [
     # LU endpoints
@@ -25,8 +26,9 @@ urlpatterns = [
     path('qr/<str:pk>/', QRCodeView.as_view()),
 
     # Dashboards
-    path('better-incomes/', reportIncome),
-    path('better-industries/', reportIndustries),
+    path('better-incomes/', report_income),
+    path('better-industries/', report_industries),
+    path('client-movements/<str:rfc>/', report_client_movements),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)

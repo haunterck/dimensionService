@@ -27,6 +27,11 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['bancomerservice-dev.us-west-2.elasticbeanstalk.com', 'localhost']
 
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'PAGE_SIZE': 100
+}
+
 
 # Application definition
 
