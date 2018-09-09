@@ -10,7 +10,7 @@ from django.db import connection
 def reportIncome(request):
     cursor = connection.cursor()
     cursor.execute("""
-        select count(*), sector , actividad, FORMAT(sum(monto), 2) from BANCOMER.movimientos mv
+        select count(*), sector , actividad, sum(monto) from BANCOMER.movimientos mv
             INNER JOIN BANCOMER.profile po
                 on po.rfc = mv.rfc
             inner join BANCOMER.lu_casfim as cas
@@ -21,14 +21,12 @@ def reportIncome(request):
     """)
 
     rows = cursor.fetchall()
-    # return Response(rows, status.HTTP_200_OK)
     response_list = list()
     for row in rows:
-        amount = row[3].replace(",", "")
         response_list.append({
             "valor": row[0],
             "sector": row[1],
             "actividad": row[2],
-            "monto": "$" + str(decimal.Decimal(amount)),
+            "monto": "$" + str(round(decimal.Decimal(row[3]), 2)),
         })
     return JsonResponse(response_list, safe=False, status=200)
