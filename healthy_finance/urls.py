@@ -3,10 +3,11 @@ from rest_framework.urlpatterns import format_suffix_patterns
 from healthy_finance.views import LuIepsView
 from healthy_finance.views import LuCasfimView
 from healthy_finance.views import QRCodeView
-from healthy_finance.views import reportIncome
 from healthy_finance.views import ClienteView
 from healthy_finance.views import AttPlanView
 from healthy_finance.views import BancomerpayView
+from healthy_finance.views import reportIncome
+from healthy_finance.views import reportIndustries
 
 urlpatterns = [
     # LU endpoints
@@ -25,6 +26,7 @@ urlpatterns = [
 
     # Dashboards
     path('better-incomes/', reportIncome),
+    path('better-industries/', reportIndustries),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)
